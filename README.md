@@ -1,17 +1,19 @@
-# Oligarchy
+# Fo Oligarchy
 
-Champagne-gold Omarchy theme: charcoal silk backgrounds, pearl text, vibrant amber window borders, and matching Neovim / Quickshell chrome.
+Champagne-gold Omarchy theme by Fo: charcoal silk backgrounds, pearl text, vibrant amber window borders, and matching Neovim / Quickshell chrome.
 
-![Oligarchy desktop preview](thumb.png)
+Theme slug: **`fo-oligarchy`** (avoids colliding with other themes named “oligarchy”).
 
-![Oligarchy wallpaper](wallpaper.png)
+![Fo Oligarchy desktop preview](thumb.png)
+
+![Fo Oligarchy wallpaper](wallpaper.png)
 
 ## Install
 
 ```bash
 omarchy theme install https://github.com/Foparty/fo-oligarchy
-# or: clone/copy into ~/.config/omarchy/themes/oligarchy
-omarchy theme set oligarchy
+# or: clone/copy into ~/.config/omarchy/themes/fo-oligarchy
+omarchy theme set fo-oligarchy
 ```
 
 That alone gives you palette, wallpapers, Hyprland gold border, Neovim (aether), and shell bar/control gold tokens.
@@ -21,7 +23,7 @@ That alone gives you palette, wallpapers, Hyprland gold border, Neovim (aether),
 Theme install does **not** auto-wire custom bar widgets. Run:
 
 ```bash
-~/.config/omarchy/themes/oligarchy/extras/install-bar-extras.sh
+~/.config/omarchy/themes/fo-oligarchy/extras/install-bar-extras.sh
 omarchy restart shell   # if the bar did not hot-reload
 ```
 
@@ -29,14 +31,14 @@ This installs:
 
 | Plugin | Effect |
 |--------|--------|
-| `oligarchy.menu` | Omarchy logo always uses theme `accent` gold |
-| `oligarchy.workspaces` | Focused workspace uses gold |
+| `fo-oligarchy.menu` | Omarchy logo always uses theme `accent` gold |
+| `fo-oligarchy.workspaces` | Focused workspace uses gold |
 
-Ids are stable (`oligarchy.*`), not username-prefixed, so they work for anyone.
+Ids are prefixed `fo-oligarchy.*` so they won’t clash with other people’s theme widgets.
 
 ## Optional: spinning border + translucent terminals
 
-Hyprland’s `borderangle` loop can stall on translucent compositor opacity. Oligarchy’s recommended setup:
+Hyprland’s `borderangle` loop can stall on translucent compositor opacity. Recommended setup:
 
 1. Keep terminals **opaque to Hyprland** (snippet):  
    [`extras/looknfeel-terminals.lua.snippet`](extras/looknfeel-terminals.lua.snippet) → add to `~/.config/hypr/looknfeel.lua`
@@ -63,10 +65,10 @@ Border animation + colors live in the theme’s [`hyprland.lua`](hyprland.lua) (
 Always re-apply so Hyprland/shell pick up state copies:
 
 ```bash
-omarchy theme set oligarchy
+omarchy theme set fo-oligarchy
 ```
 
 ## Notes
 
 - Do **not** copy someone else’s full `~/.config/omarchy/shell.json` — it would overwrite your bar layout. Use the install script instead.
-- Switching away from Oligarchy keeps `oligarchy.*` plugins installed; re-enable `omarchy.menu` / `omarchy.workspaces` if you want stock widgets back, or leave the gold variants (they follow each theme’s `accent`).
+- Switching away from Fo Oligarchy keeps `fo-oligarchy.*` plugins installed; re-enable `omarchy.menu` / `omarchy.workspaces` if you want stock widgets back, or leave these variants (they follow each theme’s `accent`).

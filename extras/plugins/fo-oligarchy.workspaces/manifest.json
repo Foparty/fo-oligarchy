@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "id": "oligarchy.workspaces",
-  "name": "Oligarchy workspaces",
+  "id": "fo-oligarchy.workspaces",
+  "name": "Fo Oligarchy workspaces",
   "version": "1.0.0",
-  "author": "Oligarchy",
-  "description": "Workspace indicators with gold focused workspace for the Oligarchy theme",
+  "author": "Fo",
+  "description": "Workspace indicators with gold focused workspace for the Fo Oligarchy theme",
   "kinds": [
     "bar-widget"
   ],
@@ -12,7 +12,7 @@
     "barWidget": "Workspaces.qml"
   },
   "barWidget": {
-    "displayName": "Oligarchy workspaces",
+    "displayName": "Fo Oligarchy workspaces",
     "description": "Workspace number indicators",
     "category": "Compositor",
     "allowMultiple": false

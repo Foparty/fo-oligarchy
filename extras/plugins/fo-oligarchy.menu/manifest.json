@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "id": "oligarchy.menu",
-  "name": "Oligarchy menu",
+  "id": "fo-oligarchy.menu",
+  "name": "Fo Oligarchy menu",
   "version": "1.0.0",
-  "author": "Oligarchy",
-  "description": "Omarchy menu with champagne-gold logo for the Oligarchy theme",
+  "author": "Fo",
+  "description": "Omarchy menu with champagne-gold logo for the Fo Oligarchy theme",
   "kinds": [
     "menu",
     "bar-widget"
@@ -15,7 +15,7 @@
     "barWidget": "BarWidget.qml"
   },
   "barWidget": {
-    "displayName": "Oligarchy menu",
+    "displayName": "Fo Oligarchy menu",
     "description": "Launches the Omarchy menu",
     "category": "Compositor",
     "allowMultiple": false

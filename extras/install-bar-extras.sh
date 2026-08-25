@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install Oligarchy bar extras: gold logo + gold focused workspace.
+# Install Fo Oligarchy bar extras: gold logo + gold focused workspace.
 # Safe to re-run. Does not overwrite unrelated bar widgets.
 
 set -euo pipefail
@@ -10,57 +10,69 @@ SRC_PLUGINS="$SCRIPT_DIR/plugins"
 DEST_PLUGINS="${XDG_CONFIG_HOME:-$HOME/.config}/omarchy/plugins"
 SHELL_JSON="${XDG_CONFIG_HOME:-$HOME/.config}/omarchy/shell.json"
 
+MENU_ID="fo-oligarchy.menu"
+WORKSPACES_ID="fo-oligarchy.workspaces"
+
 fail() {
-  echo "oligarchy extras: $*" >&2
+  echo "fo-oligarchy extras: $*" >&2
   exit 1
 }
 
-[[ -d $SRC_PLUGINS/oligarchy.menu ]] || fail "missing $SRC_PLUGINS/oligarchy.menu"
-[[ -d $SRC_PLUGINS/oligarchy.workspaces ]] || fail "missing $SRC_PLUGINS/oligarchy.workspaces"
+[[ -d $SRC_PLUGINS/$MENU_ID ]] || fail "missing $SRC_PLUGINS/$MENU_ID"
+[[ -d $SRC_PLUGINS/$WORKSPACES_ID ]] || fail "missing $SRC_PLUGINS/$WORKSPACES_ID"
 
 mkdir -p "$DEST_PLUGINS"
 
 echo "Installing plugins to $DEST_PLUGINS ..."
-rm -rf "$DEST_PLUGINS/oligarchy.menu" "$DEST_PLUGINS/oligarchy.workspaces"
-cp -a "$SRC_PLUGINS/oligarchy.menu" "$DEST_PLUGINS/oligarchy.menu"
-cp -a "$SRC_PLUGINS/oligarchy.workspaces" "$DEST_PLUGINS/oligarchy.workspaces"
+rm -rf "$DEST_PLUGINS/$MENU_ID" "$DEST_PLUGINS/$WORKSPACES_ID"
+cp -a "$SRC_PLUGINS/$MENU_ID" "$DEST_PLUGINS/$MENU_ID"
+cp -a "$SRC_PLUGINS/$WORKSPACES_ID" "$DEST_PLUGINS/$WORKSPACES_ID"
 
-# Drop username-prefixed clones if present from earlier local testing.
-rm -rf "$DEST_PLUGINS/fo.menu" "$DEST_PLUGINS/fo.workspaces"
+# Drop older local clone names if present.
+rm -rf \
+  "$DEST_PLUGINS/fo.menu" \
+  "$DEST_PLUGINS/fo.workspaces" \
+  "$DEST_PLUGINS/oligarchy.menu" \
+  "$DEST_PLUGINS/oligarchy.workspaces"
 
 if [[ -f $SHELL_JSON ]]; then
   echo "Updating $SHELL_JSON bar layout ..."
   tmp=$(mktemp)
-  jq '
+  jq \
+    --arg menu "$MENU_ID" \
+    --arg workspaces "$WORKSPACES_ID" '
     .bar.layout.left |= map(
-      if (.id == "omarchy.menu" or .id == "fo.menu") then .id = "oligarchy.menu"
-      elif (.id == "omarchy.workspaces" or .id == "fo.workspaces") then .id = "oligarchy.workspaces"
+      if (.id == "omarchy.menu" or .id == "fo.menu" or .id == "oligarchy.menu") then .id = $menu
+      elif (.id == "omarchy.workspaces" or .id == "fo.workspaces" or .id == "oligarchy.workspaces") then .id = $workspaces
       else . end
     )
     | .disabledPlugins = (
         ((.disabledPlugins // [])
-          + ["omarchy.menu", "omarchy.workspaces", "fo.menu", "fo.workspaces"]
+          + ["omarchy.menu", "omarchy.workspaces", "fo.menu", "fo.workspaces", "oligarchy.menu", "oligarchy.workspaces"]
           | unique)
-        - ["oligarchy.menu", "oligarchy.workspaces"]
+        - [$menu, $workspaces]
       )
     | .cloneSourceRestores = (
         (.cloneSourceRestores // [])
-        | map(select(. != "fo.menu" and . != "fo.workspaces"
-              and . != "oligarchy.menu" and . != "oligarchy.workspaces"))
+        | map(select(
+            . != "fo.menu" and . != "fo.workspaces"
+            and . != "oligarchy.menu" and . != "oligarchy.workspaces"
+            and . != $menu and . != $workspaces
+          ))
       )
   ' "$SHELL_JSON" >"$tmp"
   mv "$tmp" "$SHELL_JSON"
 else
   echo "No shell.json yet; creating minimal left-bar layout ..."
   mkdir -p "$(dirname "$SHELL_JSON")"
-  cat >"$SHELL_JSON" <<'EOF'
+  cat >"$SHELL_JSON" <<EOF
 {
   "version": 1,
   "bar": {
     "layout": {
       "left": [
-        { "id": "oligarchy.menu" },
-        { "id": "oligarchy.workspaces" }
+        { "id": "$MENU_ID" },
+        { "id": "$WORKSPACES_ID" }
       ],
       "center": [],
       "right": []
@@ -78,9 +90,9 @@ if command -v omarchy-shell >/dev/null 2>&1; then
 fi
 
 echo
-echo "Oligarchy bar extras installed."
-echo "  plugins: oligarchy.menu, oligarchy.workspaces"
+echo "Fo Oligarchy bar extras installed."
+echo "  plugins: $MENU_ID, $WORKSPACES_ID"
 echo "  theme:   $THEME_DIR"
 echo
 echo "If the bar does not refresh: omarchy restart shell"
-echo "Then apply the theme (if needed): omarchy theme set oligarchy"
+echo "Then apply the theme (if needed): omarchy theme set fo-oligarchy"
