@@ -5,7 +5,7 @@ Champagne-gold Omarchy theme: charcoal silk backgrounds, pearl text, vibrant amb
 ## Install
 
 ```bash
-omarchy theme install <this-repo-url>
+omarchy theme install https://github.com/Foparty/fo-oligarchy
 # or: clone/copy into ~/.config/omarchy/themes/oligarchy
 omarchy theme set oligarchy
 ```
