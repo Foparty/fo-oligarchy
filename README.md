@@ -4,7 +4,7 @@ Champagne-gold Omarchy theme by Fo: charcoal silk backgrounds, pearl text, vibra
 
 Theme slug: **`fo-oligarchy`** (avoids colliding with other themes named “oligarchy”).
 
-![Fo Oligarchy desktop preview](image.png)
+![Fo Oligarchy desktop preview](preview.png)
 
 ![Fo Oligarchy wallpaper](wallpaper.png)
 
