@@ -2,13 +2,9 @@
 
 Champagne-gold Omarchy theme: charcoal silk backgrounds, pearl text, vibrant amber window borders, and matching Neovim / Quickshell chrome.
 
-<p align="center">
-  <img src="thumb.png" alt="Oligarchy desktop preview" width="800" />
-</p>
+![Oligarchy desktop preview](thumb.png)
 
-<p align="center">
-  <img src="wallpaper.png" alt="Oligarchy wallpaper" width="800" />
-</p>
+![Oligarchy wallpaper](wallpaper.png)
 
 ## Install
 
