@@ -1,0 +1,39 @@
+mode = "dark"
+
+# Champagne gold — the quiet flex
+accent = "#c4a574"
+selection = "#322f2a"
+muted = "#5a564e"
+
+# Charcoal silk
+background = "#1b1a18"
+dark_background = "#131211"
+darker_background = "#0c0b0a"
+lighter_background = "#2c2a26"
+
+# Pearl & platinum
+foreground = "#e6e2d8"
+dark_foreground = "#6e6b63"
+light_foreground = "#c4bfb3"
+bright_foreground = "#f0ebe3"
+
+# Deep amber → hot gold → bright highlight (active border)
+hyprland_active_border = "rgba(8a4f12ff) rgba(c47a18ff) rgba(e8a820ff) rgba(ffd700ff) rgba(fff0a0ff) rgba(ffd700ff) rgba(e8a820ff) 45deg"
+hyprland_inactive_border = "rgba(322f2aaa)"
+
+# Soft spectrum — almost mono, with gold / silver / diamond touches
+red = "#b8928e"
+yellow = "#c4a574"
+orange = "#b89970"
+green = "#8f9a8c"
+cyan = "#a8b5ba"
+blue = "#9aa3ad"
+magenta = "#b0a4a8"
+brown = "#7a6b55"
+
+bright_red = "#c9a5a1"
+bright_yellow = "#d4b888"
+bright_green = "#a3aea0"
+bright_cyan = "#b8c5ca"
+bright_blue = "#adb6c0"
+bright_magenta = "#c0b4b8"

@@ -1,0 +1,8 @@
+-- Optional: paste into ~/.config/hypr/looknfeel.lua
+-- Keeps Hyprland window opacity at 1.0 for terminals so borderangle loop
+-- does not stall. Pair with kitty background_opacity for the glass look.
+
+o.window({ tag = "terminal" }, {
+  tag = "-default-opacity",
+  opacity = "1.0 override 1.0 override",
+})

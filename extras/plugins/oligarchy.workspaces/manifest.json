@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "oligarchy.workspaces",
+  "name": "Oligarchy workspaces",
+  "version": "1.0.0",
+  "author": "Oligarchy",
+  "description": "Workspace indicators with gold focused workspace for the Oligarchy theme",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "Workspaces.qml"
+  },
+  "barWidget": {
+    "displayName": "Oligarchy workspaces",
+    "description": "Workspace number indicators",
+    "category": "Compositor",
+    "allowMultiple": false
+  },
+  "omarchy": {
+    "clonedFrom": "omarchy.workspaces"
+  }
+}
